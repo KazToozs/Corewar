@@ -5,7 +5,7 @@
 ** Login   <pallua_j@epitech.net>
 y** 
 ** Started on  Wed Oct  8 10:23:41 2014 jules palluau
-** Last update Mon Mar 23 16:35:35 2015 jules palluau
+** Last update Tue Mar 24 12:09:26 2015 jules palluau
 */
 
 #include "corewar.h"
@@ -60,7 +60,7 @@ int	my_getnbr(char *str)
   int	x;
 
   if (my_str_isnum(str) == 0)
-    aff_error("Argument is not a number\n");
+    aff_error("Argument is not a good number\n");
   result = 0;
   x = 0;
   while (str[x] != '\0' && (str[x] == '+' || str[x] == '-'))

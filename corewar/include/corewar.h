@@ -5,7 +5,7 @@
 ** Login   <pallua_j@epitech.net>
 ** 
 ** Started on  Mon Feb 16 14:36:25 2015 jules palluau
-** Last update Mon Mar 23 19:33:15 2015 jules palluau
+** Last update Tue Mar 24 12:04:58 2015 jules palluau
 */
 
 #ifndef COREWAR_H_
@@ -81,6 +81,7 @@ int	my_strncmp(const char *s1, const char *s2, int n);
 char	*my_strdup(char *src);
 int	my_getnbr(char *str);
 int	my_str_isnum(char *str);
+int	*init_order();
 
 /*
 ********* Prototypes VM ***************

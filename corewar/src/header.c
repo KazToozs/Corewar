@@ -5,7 +5,7 @@
 ** Login   <pallua_j@epitech.net>
 ** 
 ** Started on  Wed Mar 18 11:36:07 2015 jules palluau
-** Last update Mon Mar 23 19:37:41 2015 jules palluau
+** Last update Tue Mar 24 12:11:59 2015 jules palluau
 */
 
 #include "corewar.h"
@@ -29,7 +29,7 @@ int	check_magic(t_champ *c)
   return (0);
 }
 
-int	my_order2(t_vm *vm, int *test, int v)
+int	*my_order2(t_vm *vm, int *test, int v)
 {
   int	y;
 
@@ -38,39 +38,32 @@ int	my_order2(t_vm *vm, int *test, int v)
     {
       if (test[y] > 0)
 	{
-	  vm->c[v]->player = test[y];
+	  vm->c[v].player = test[y];
 	  test[y] = 0;
 	}
       y++;
     }
-  return (0);
+  return (test);
 }
 
-void	my_order(t_vm * vm, int x, int v)
+void		my_order(t_vm * vm, int x, int v)
 {
-  int	*test;
-  int	y;
+  static int	*test;
 
-  y = 0;
-  if ((test = malloc(sizeof(int) * 5)) == NULL)
-    aff_error("Can't perform malloc\n");
-  while (y < 5)
-    {
-      test[y] = y;
-      y++;
-    }
+  if (v == 0)
+    test = init_order();
   if ((x > 0 || x < 5) && test[x] == x)
     {
       test[x] = 0;
-      vm->c[v]->player = x;
+      vm->c[v].player = x;
     }
-  else if (test[x] == 0)
+  else if (x == 42)
+    test = my_order2(vm, test, v);
+  else if (test[x] == 0 && x > 0 && x < 5)
     {
-      my_printf("prog number %d already used\n", x);
+      my_printf("prog_number %d already used\n", x);
       exit(-1);
     }
-  else if (test[x] == 42)
-    my_order2(vm, test, v);
   else
     aff_error("[ERROR]: Invalid prog_number!\n");
 }
@@ -81,18 +74,18 @@ int		my_header(char *av, t_vm *vm, int y, int add)
 
   if (av == NULL)
     aff_error("Corewar executable missing\n");
-  if ((vm->c = realloc(sizeof(header_t) * (x + 1))) == NULL)
+  if ((vm->c = realloc(vm->c, sizeof(vm->c[0]) * (x + 1))) == NULL)
     aff_error("Can't perform malloc\n");
-  if ((vm->c[x]->fd = open(av, O_RDONLY)) == -1)
+  if ((vm->c[x].fd = open(av, O_RDONLY)) == -1)
     my_printf("%s is not a corewar executable\n", av);
-  read(vm->c[x]->fd, &vm->c[x]->head, sizeof(header_t));
-  check_magic(vm->c[x]);
-  if (vm->c[x]->endian == 1)
-    vm->c[x]->head.prog_size = reverse_endian(vm->c[x]->head.prog_size);
-  my_printf("Prog_name:%s\nComment:%s\nProg_size:%d\n", vm->c[x]->head.prog_name, vm->c[x]->head.comment, vm->c[x]->head.prog_size);
+  read(vm->c[x].fd, &vm->c[x].head, sizeof(header_t));
+  check_magic(&vm->c[x]);
+  if (vm->c[x].endian == 1)
+    vm->c[x].head.prog_size = reverse_endian(vm->c[x].head.prog_size);
+  my_printf("Prog_name:%s\nComment:%s\nProg_size:%d\n", vm->c[x].head.prog_name, vm->c[x].head.comment, vm->c[x].head.prog_size);
   my_order(vm, y, x);
   if (add >= 0 && add < MEM_SIZE)
-    vm->c[x]->add = add;
+    vm->c[x].add = add;
   else if (add >= MEM_SIZE)
     aff_error("[ERROR]: address bigger than MEM_SIZE!\n");
   x++;

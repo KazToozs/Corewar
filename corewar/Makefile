@@ -5,7 +5,7 @@
 ## Login   <pallua_j@epitech.net>
 ## 
 ## Started on  Tue Mar 17 15:37:17 2015 jules palluau
-## Last update Mon Mar 23 19:32:50 2015 jules palluau
+## Last update Tue Mar 24 12:04:37 2015 jules palluau
 ##
 
 CC	=	gcc
@@ -18,6 +18,7 @@ SRCS	=	src/main.c		\
 		src/header.c		\
 		src/check.c		\
 		src/my_vm.c		\
+		src/init.c		\
 		func/my_strcmp.c	\
 		func/my_strdup.c	\
 		func/aff_error.c	\
@@ -31,7 +32,7 @@ OBJ	=	$(SRCS:.c=.o)
 
 LFLAGS	=	-L ./lib -lmy
 
-CFLAGS	+=	-W -Wall -Wextra
+CFLAGS	+=	-W -Wall -Wextra -g3
 CFLAGS	+=	-I ./include
 
 all:	$(NAME)

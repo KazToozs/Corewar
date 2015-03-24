@@ -5,10 +5,10 @@
 ** Login   <pallua_j@epitech.net>
 ** 
 ** Started on  Wed Oct  8 11:29:19 2014 jules palluau
-** Last update Wed Jan 21 09:14:42 2015 jules palluau
+** Last update Tue Mar 24 10:06:23 2015 jules palluau
 */
 
-#include "mysh.h"
+#include "corewar.h"
 
 char	*my_strdup(char *src)
 {

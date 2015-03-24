@@ -5,11 +5,11 @@
 ** Login   <pallua_j@epitech.net>
 ** 
 ** Started on  Tue Nov 11 12:23:37 2014 jules palluau
-** Last update Thu Nov 13 11:30:26 2014 jules palluau
+** Last update Tue Mar 24 10:24:55 2015 jules palluau
 */
 
-#include "printf.h"
 #include <stdarg.h>
+#include "printf.h"
 
 int	va_my_putchar(va_list ap)
 {
@@ -45,6 +45,6 @@ int	va_my_putnbr_base_hexmin(va_list ap)
 {
   int	x;
 
-  x = my_putnbr_base(va_arg(ap ,unsigned int), "0123456789abcdef");
+  x = my_putnbr_base(va_arg(ap, unsigned int), "0123456789abcdef");
   return (x);
 }
