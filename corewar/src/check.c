@@ -5,7 +5,7 @@
 ** Login   <pallua_j@epitech.net>
 ** 
 ** Started on  Wed Mar 18 18:36:03 2015 jules palluau
-** Last update Tue Mar 24 11:45:56 2015 jules palluau
+** Last update Tue Mar 24 12:14:13 2015 jules palluau
 */
 
 #include "corewar.h"
@@ -14,7 +14,8 @@ int	prog_number(char **av, t_vm *vm, int *x)
 {
   if ((my_strcmp(av[(*x)], "-n")) == 0 && (my_strcmp(av[(*x) + 2], "-a")) == 0)
     {
-      my_header(av[(*x) + 4], vm, my_getnbr(av[(*x) + 1]), my_getnbr(av[(*x) + 3]));
+      my_header(av[(*x) + 4], vm, my_getnbr(av[(*x) + 1]),
+		my_getnbr(av[(*x) + 3]));
       (*x) += 5;
     }
   else if ((my_strcmp(av[(*x)], "-n")) == 0)

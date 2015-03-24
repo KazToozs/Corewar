@@ -5,7 +5,7 @@
 ** Login   <pallua_j@epitech.net>
 ** 
 ** Started on  Wed Mar 18 11:36:07 2015 jules palluau
-** Last update Tue Mar 24 12:11:59 2015 jules palluau
+** Last update Tue Mar 24 12:15:29 2015 jules palluau
 */
 
 #include "corewar.h"
@@ -82,12 +82,13 @@ int		my_header(char *av, t_vm *vm, int y, int add)
   check_magic(&vm->c[x]);
   if (vm->c[x].endian == 1)
     vm->c[x].head.prog_size = reverse_endian(vm->c[x].head.prog_size);
-  my_printf("Prog_name:%s\nComment:%s\nProg_size:%d\n", vm->c[x].head.prog_name, vm->c[x].head.comment, vm->c[x].head.prog_size);
   my_order(vm, y, x);
   if (add >= 0 && add < MEM_SIZE)
     vm->c[x].add = add;
   else if (add >= MEM_SIZE)
     aff_error("[ERROR]: address bigger than MEM_SIZE!\n");
+  else
+    vm->c[x].add = -1;
   x++;
   return (0);
 }
