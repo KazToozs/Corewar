@@ -5,10 +5,15 @@
 ** Login   <pallua_j@epitech.net>
 ** 
 ** Started on  Wed Mar 18 18:36:03 2015 jules palluau
-** Last update Tue Mar 24 12:14:13 2015 jules palluau
+** Last update Wed Mar 25 13:12:25 2015 jules palluau
 */
 
 #include "corewar.h"
+
+/*
+** Vérifie si les options sont existantes
+** et appel la fonction my_header pour les intégrés à la vm.
+*/
 
 int	prog_number(char **av, t_vm *vm, int *x)
 {

@@ -5,7 +5,7 @@
 ** Login   <pallua_j@epitech.net>
 ** 
 ** Started on  Wed Mar 18 11:36:07 2015 jules palluau
-** Last update Tue Mar 24 12:15:29 2015 jules palluau
+** Last update Wed Mar 25 15:50:54 2015 jules palluau
 */
 
 #include "corewar.h"
@@ -18,6 +18,10 @@ int	reverse_endian(int x)
   return ((en << 16) | ((en >> 16) & 0xFFFF));
 }
 
+/*
+** Vérifie si le champion est en big ou en little endian.
+*/
+
 int	check_magic(t_champ *c)
 {
   if (c->head.magic == COREWAR_EXEC_MAGIC)
@@ -28,6 +32,11 @@ int	check_magic(t_champ *c)
     exit(0);
   return (0);
 }
+
+/*
+** Donne au champion le numéro de joueur le plus petit si il n'a pas été
+** précisé.
+*/
 
 int	*my_order2(t_vm *vm, int *test, int v)
 {
@@ -45,6 +54,11 @@ int	*my_order2(t_vm *vm, int *test, int v)
     }
   return (test);
 }
+
+/*
+** Vérifie si le numéro du joueur est précisé
+** et si il est disponible.
+*/
 
 void		my_order(t_vm * vm, int x, int v)
 {
@@ -68,6 +82,11 @@ void		my_order(t_vm * vm, int x, int v)
     aff_error("[ERROR]: Invalid prog_number!\n");
 }
 
+/*
+** Récupération du header du champion
+** et de toutes ces caractéristiques...
+*/
+
 int		my_header(char *av, t_vm *vm, int y, int add)
 {
   static int	x = 0;
@@ -84,7 +103,7 @@ int		my_header(char *av, t_vm *vm, int y, int add)
     vm->c[x].head.prog_size = reverse_endian(vm->c[x].head.prog_size);
   my_order(vm, y, x);
   if (add >= 0 && add < MEM_SIZE)
-    vm->c[x].add = add;
+    vm->c[x].add = add % MEM_SIZE;
   else if (add >= MEM_SIZE)
     aff_error("[ERROR]: address bigger than MEM_SIZE!\n");
   else
