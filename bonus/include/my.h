@@ -5,7 +5,7 @@
 ** Login   <belfio_u@epitech.net>
 ** 
 ** Started on  Fri Oct 10 09:04:55 2014 ugo belfiore
-** Last update Sun Dec 14 20:53:21 2014 ugo belfiore
+** Last update Mon Apr  6 16:27:29 2015 ugo belfiore
 */
 
 #ifndef	MY_H_
@@ -39,7 +39,6 @@ int     my_put_nbr_hexa_P(unsigned long nb, char *base);
 int     my_put_S(char *str);
 void    aff_0(int nb);
 int     my_put_S(char *str);
-int	my_printf(const char *format, ...);
 char	*convert_base(char *nbr, char *base_from, char *base_to);
 
 #endif /* !MY_H_ */

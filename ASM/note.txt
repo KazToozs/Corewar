@@ -1,1 +1,0 @@
-Ouvrir un .cor -> ouvrir le fichier avec emacs, puis alt + x; tapper : helx-mode
